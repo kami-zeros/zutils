@@ -10,7 +10,7 @@ Add it in your root build.gradle at the end of repositories:
 Step 2. Add the dependency
 
 	dependencies {
-	        implementation 'com.github.kami-zeros:zutils:v1.0.0-rc'
+	        implementation 'com.github.kami-zeros:zutils:1.0.1'
 	}
 
 # zutils
