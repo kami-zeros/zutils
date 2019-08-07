@@ -13,7 +13,7 @@ public class ZLog {
         throw new UnsupportedOperationException("cannot be instantiated");
     }
 
-    public static boolean isDebug = true;// 是否需要打印bug，可以在application的onCreate函数里面初始化
+    public static boolean isDebug = false;// 是否需要打印bug，可以在application的onCreate函数里面初始化
     private static final String TAG = "ZLog";
 
     /*********----- 下面四个是默认tag的函数 ---------**************/
