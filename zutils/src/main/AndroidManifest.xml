@@ -1,22 +1,3 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    package="com.zxx.zutils">
+    package="com.zxx.zutils" />
 
-    <application
-        tools:replace="android:icon, android:label, android:theme">
-
-        <!-- Android7.0调用相机-安卓7.0 Uri.fromFile(file)报错
-        此处权限的名字还不能与其他应用的权限相同，所以最好用包名来命名-->
-        <provider
-            android:name="android.support.v4.content.FileProvider"
-            android:authorities="com.zxx.zutils.provider"
-            android:exported="false"
-            android:grantUriPermissions="true">
-            <!--提供共享路径-->
-            <meta-data
-                android:name="android.support.FILE_PROVIDER_PATHS"
-                android:resource="@xml/filepaths" />
-        </provider>
-    </application>
-
-</manifest>
