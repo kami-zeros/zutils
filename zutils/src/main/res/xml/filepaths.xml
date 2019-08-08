@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<paths xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!--Android7.0调用相机,用于指定共享的目录-->
+    <external-path
+        name="image"
+        path="." />
+
+    <external-path
+        name="files_root"
+        path="."/>
+
+    <!--external-path 表示用来指定共享路径的-->
+    <!--name 随便取，只是一个标签-->
+    <!--path 这个比较重要，如果不设置，则表示将整个 SD 卡进行共享，然后制定了，比如 path=”Pictrues”那么，就只共享 sd卡下的 Pictures 文件夹-->
+
+</paths>
