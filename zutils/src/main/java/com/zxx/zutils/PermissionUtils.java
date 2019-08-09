@@ -43,10 +43,11 @@ public class PermissionUtils {
     private static final String PERMISSION_ACCESS_COARSE_LOCATION = Manifest.permission.ACCESS_COARSE_LOCATION;
     private static final String PERMISSION_READ_EXTERNAL_STORAGE = Manifest.permission.READ_EXTERNAL_STORAGE;
     private static final String PERMISSION_WRITE_EXTERNAL_STORAGE = Manifest.permission.WRITE_EXTERNAL_STORAGE;
-    private static final String PERMISSION_READ_LOGS = Manifest.permission.READ_LOGS;
-    private static final String PERMISSION_SET_DEBUG_APP = Manifest.permission.SET_DEBUG_APP;
-    private static final String PERMISSION_SYSTEM_ALERT_WINDOW = Manifest.permission.SYSTEM_ALERT_WINDOW;
-    private static final String PERMISSION_WRITE_APN_SETTINGS = Manifest.permission.WRITE_APN_SETTINGS;
+    //其他
+    private static final String READ_LOGS = Manifest.permission.READ_LOGS;
+    private static final String SET_DEBUG_APP = Manifest.permission.SET_DEBUG_APP;
+    private static final String SYSTEM_ALERT_WINDOW = Manifest.permission.SYSTEM_ALERT_WINDOW;
+    private static final String WRITE_APN_SETTINGS = Manifest.permission.WRITE_APN_SETTINGS;
 
     private static final String[] requestPermissions = {
             PERMISSION_RECORD_AUDIO,
@@ -57,7 +58,9 @@ public class PermissionUtils {
             PERMISSION_ACCESS_FINE_LOCATION,
             PERMISSION_ACCESS_COARSE_LOCATION,
             PERMISSION_READ_EXTERNAL_STORAGE,
-            PERMISSION_WRITE_EXTERNAL_STORAGE
+            PERMISSION_WRITE_EXTERNAL_STORAGE,
+
+            READ_LOGS, SET_DEBUG_APP, SYSTEM_ALERT_WINDOW, WRITE_APN_SETTINGS
     };
 
     //相机与读写文件请求
@@ -67,18 +70,24 @@ public class PermissionUtils {
             PERMISSION_WRITE_EXTERNAL_STORAGE
     };
 
-    //分享权限
+    //读写文件请求
+    public static final String[] requestReadWrite = {
+            PERMISSION_READ_EXTERNAL_STORAGE,
+            PERMISSION_WRITE_EXTERNAL_STORAGE
+    };
+
+    //分享权限(友盟分享有可能有问题)
     public static final String[] requestShare = {
+            PERMISSION_ACCESS_FINE_LOCATION,
+            PERMISSION_CALL_PHONE,
+            PERMISSION_READ_PHONE_STATE,
+            PERMISSION_CAMERA,
             PERMISSION_READ_EXTERNAL_STORAGE,
             PERMISSION_WRITE_EXTERNAL_STORAGE,
-//            PERMISSION_ACCESS_FINE_LOCATION,
-//            PERMISSION_CALL_PHONE,
-//            PERMISSION_READ_LOGS,
-            PERMISSION_READ_PHONE_STATE,
-//            PERMISSION_SET_DEBUG_APP,
-//            PERMISSION_SYSTEM_ALERT_WINDOW,
-//            PERMISSION_GET_ACCOUNTS,
-//            PERMISSION_WRITE_APN_SETTINGS
+
+            PERMISSION_GET_ACCOUNTS,
+            SYSTEM_ALERT_WINDOW,
+            WRITE_APN_SETTINGS
     };
 
     //地图文件请求
