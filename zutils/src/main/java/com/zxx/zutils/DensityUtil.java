@@ -12,11 +12,11 @@ import java.util.List;
 /**
  * 单位转换工具 on 2017/4/18.
  */
-
 public class DensityUtil {
 
     /**
      * 1.根据手机的分辨率从 dp 的单位 转成为 px(像素)，保证尺寸大小不变
+     *
      * @param dpValue （DisplayMetrics类中属性density）
      */
     public static int dip2px(Context context, float dpValue) {
@@ -26,6 +26,7 @@ public class DensityUtil {
 
     /**
      * 2.根据手机的分辨率从 px(像素) 的单位 转成为 dp，保证尺寸大小不变
+     *
      * @param pxValue （DisplayMetrics类中属性density）
      */
     public static int px2dip(Context context, float pxValue) {
@@ -36,6 +37,7 @@ public class DensityUtil {
 
     /**
      * 3.将px值转换为sp值，保证文字大小不变
+     *
      * @param pxValue （DisplayMetrics类中属性scaledDensity）
      */
     public static float px2sp(Context context, float pxValue) {
@@ -46,14 +48,15 @@ public class DensityUtil {
 
     /**
      * 4.将sp值转换为px值，保证文字大小不变
+     *
      * @param spValue （DisplayMetrics类中属性scaledDensity）
      */
     public static float sp2px(Context context, float spValue) {
         final float fontScale = context.getResources().getDisplayMetrics().scaledDensity;
         return (spValue * fontScale + 0.5f);
     }
-	
-	/**
+
+    /**
      * @Description: 获得屏幕高度
      */
     public static int getHeight(Activity activity) {
@@ -79,8 +82,8 @@ public class DensityUtil {
         ((WindowManager) context.getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay().getMetrics(dm);
         return dm.widthPixels;
     }
-	
-	/**
+
+    /**
      * 隐藏软键盘：如果输入法在窗口上已经显示，则隐藏，反之则显示
      */
     public static void hideKeyboard(Context context) {
@@ -105,10 +108,11 @@ public class DensityUtil {
 
     /**
      * 隐藏软键盘(可用于Activity，Fragment)
+     *
      * @param viewList 需要放的是当前界面所有触发软键盘弹出的控件。
      */
     public static void hideKeyboard(Context context, List<View> viewList) {
-        if (viewList==null) return;
+        if (viewList == null) return;
         InputMethodManager manager = (InputMethodManager) context.getSystemService(Activity.INPUT_METHOD_SERVICE);
         for (View v : viewList) {
             manager.hideSoftInputFromWindow(v.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);

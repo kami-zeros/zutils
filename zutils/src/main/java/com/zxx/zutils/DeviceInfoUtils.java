@@ -1,4 +1,4 @@
-package com.meyoung.wms.utils;
+package com.zxx.zutils;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
@@ -15,9 +15,6 @@ import android.support.v4.app.ActivityCompat;
 import android.telephony.TelephonyManager;
 import android.text.TextUtils;
 
-import com.zxx.zutils.ZLog;
-
-import java.io.FileOutputStream;
 import java.net.InetAddress;
 import java.net.NetworkInterface;
 import java.net.SocketException;
