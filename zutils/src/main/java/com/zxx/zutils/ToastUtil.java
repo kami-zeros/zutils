@@ -40,9 +40,9 @@ public class ToastUtil {
         mToast.show();
     }
 
-    // 默认duration为1200
+    // 默认duration为1300
     public static void ToastMsg(Context mContext, String text) {
-        ToastMsg(mContext, text, 1200);
+        ToastMsg(mContext, text, 1300);
     }
 
 

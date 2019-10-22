@@ -29,11 +29,14 @@ import java.util.UUID;
 public class DeviceInfoUtils {
     /**
      * 获得IMEI号
+     * Android 6.0 后动态申请
+     * Android 10.0 彻底禁止第三方应用获取设备IMEI即使申请了READ_PHONE_STATE
      */
     public static String getIMEI(Context context) {
         TelephonyManager tm = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
         if (tm != null) {
             if (ActivityCompat.checkSelfPermission(context, Manifest.permission.READ_PHONE_STATE) != PackageManager.PERMISSION_GRANTED) {
+                //没有授权
                 String imei = tm.getDeviceId() != null ? tm.getDeviceId() : "";
                 if (imei.equals("0")) {
                     imei = "000000000000000";
@@ -66,7 +69,14 @@ public class DeviceInfoUtils {
         }
     }
 
-    //唯一标识
+    /**
+     * 唯一标识
+     * 1.获取IMEI
+     * 2.设备序列号
+     * 3.MAC地址
+     * 4.Android_ID
+     * 5.UUId
+     */
     public static String getDeviceId(Context context) {
         String deviceId = "";
         try {
@@ -103,10 +113,12 @@ public class DeviceInfoUtils {
 //        FileOutputStream outputStream=new FileOutputStream(file);
     }
 
-    // Android Id
+    /**
+     * Android Id
+     * 刷机、root、恢复出厂设置会改变
+     */
     private static String getAndroidId(Context context) {
-        String androidId = Settings.Secure.getString(context.getContentResolver(), Settings.Secure.ANDROID_ID);
-        return androidId;
+        return Settings.Secure.getString(context.getContentResolver(), Settings.Secure.ANDROID_ID);
     }
 
 
@@ -202,6 +214,7 @@ public class DeviceInfoUtils {
     /**
      * 获取MAC地址，注意：手机重启，mac地址为null；
      * 00:87:36:43:F8:D9
+     * 好像Android 6.0 后通过WifiManager获取到的mac是固定：02:00:00:00:00:00
      */
     public static String getMac(Context context) {
         if (context != null) {
@@ -211,6 +224,28 @@ public class DeviceInfoUtils {
         } else {
             return "";
         }
+    }
+
+    /**
+     * 解决获取Mac固定值时用的（也只是暂时支持）
+     * （没有开启WiFi也可以获取到）
+     */
+    public static String getWifiMac() {
+        try {
+            Enumeration<NetworkInterface> enumeration = NetworkInterface.getNetworkInterfaces();
+            if (enumeration == null) {
+                return "";
+            }
+            while (enumeration.hasMoreElements()) {
+                NetworkInterface anInterface = enumeration.nextElement();
+                if (anInterface.getName().equals("wlan0")) {
+                    return anInterface.getHardwareAddress().toString().replace(":", "");
+                }
+            }
+        } catch (Exception e) {
+            ZLog.e(e.getMessage());
+        }
+        return "";
     }
 
     /**

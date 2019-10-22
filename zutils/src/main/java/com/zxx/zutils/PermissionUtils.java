@@ -144,7 +144,10 @@ public class PermissionUtils {
         } else {
 //            ToastUtil.ToastMsg(activity, requestPermissions[requestCode]);
             //Build.VERSION.SDK_INT < 23的处理
-            permissionGrant.onPermissionGranted(requestCode);
+			if(permissionGrant!=null){
+				permissionGrant.onPermissionGranted(requestCode);
+			}
+            
         }
     }
 

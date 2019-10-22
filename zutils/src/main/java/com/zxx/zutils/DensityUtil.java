@@ -83,12 +83,25 @@ public class DensityUtil {
         return dm.widthPixels;
     }
 
+	/**
+	* 显示软键盘
+	*/
+	public static void showKeyboard(View view) {
+        InputMethodManager imm = (InputMethodManager) view.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+        if (imm != null) {
+            view.requestFocus();
+            imm.showSoftInput(view, 0);
+        }
+    }
+	
     /**
      * 隐藏软键盘：如果输入法在窗口上已经显示，则隐藏，反之则显示
      */
     public static void hideKeyboard(Context context) {
         InputMethodManager manager = (InputMethodManager) context.getSystemService(Context.INPUT_METHOD_SERVICE);
-        manager.toggleSoftInput(0, InputMethodManager.HIDE_NOT_ALWAYS);
+        if(manager==null)return;
+		manager.toggleSoftInput(0, InputMethodManager.HIDE_NOT_ALWAYS);
+		//manager.toggleSoftInput(0, 0);
     }
 
     /**
@@ -98,7 +111,8 @@ public class DensityUtil {
         View view = activity.getCurrentFocus();
         if (view != null) {
             InputMethodManager manager = (InputMethodManager) activity.getSystemService(Activity.INPUT_METHOD_SERVICE);
-            manager.hideSoftInputFromWindow(view.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+            if(manager==null)return;
+			manager.hideSoftInputFromWindow(view.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
 
             //隐藏软键盘
 //            InputMethodManager manager = (InputMethodManager) context.getSystemService(Context.INPUT_METHOD_SERVICE);
@@ -114,7 +128,8 @@ public class DensityUtil {
     public static void hideKeyboard(Context context, List<View> viewList) {
         if (viewList == null) return;
         InputMethodManager manager = (InputMethodManager) context.getSystemService(Activity.INPUT_METHOD_SERVICE);
-        for (View v : viewList) {
+        if(manager==null)return;
+		for (View v : viewList) {
             manager.hideSoftInputFromWindow(v.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
         }
     }
